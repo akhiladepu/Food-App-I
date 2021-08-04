@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <h3>Receipe of the Day</h3>
+
+
+</body>
+
+</html>
+<script type="module">
+
+    import navbar from './components/navbar.js'
+
+    navbar().then((res) => {
+
+        document.body.innerHTML = res;
+
+    }).catch((err) => {
+        console.log(err);
+    })
+
+</script>
+<script type="text/javascript">
+
+    var timerId;
+
+    function throttleFunction() {
+
+
+        if (timerId) {
+
+            return false;
+
+        }
+
+        timerId = setTimeout(() => {
+
+            main();
+
+            timerId = undefined;
+
+        }, 1000);
+
+        // console.log('timerId:', timerId)
+
+    }
+
+    async function main() {
+
+        let dataObject = await search();
+
+        let { meals } = dataObject;
+        // console.log('meals:', meals)
+
+        append(meals);
+
+    }
+
+    async function search() {
+
+        let q = document.getElementById("search").value;
+
+        if (q.length <= 2) {
+
+            return false;
+
+        }
+
+        let res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${q}`)
+
+        let data = await res.json();
+        // console.log('data:', data)
+
+        return data;
+
+    }
+
+    function append(dataArray) {
+
+        let append_div = document.getElementById("appendDiv");
+
+        append_div.innerHTML = "";
+
+        dataArray.forEach(({ strMeal }) => {
+            let div = document.createElement("div");
+            div.setAttribute("class", "appendElement")
+            let hr = document.createElement("hr");
+            div.innerHTML = strMeal;
+
+            append_div.append(div, hr);
+        })
+    }
+
+</script>

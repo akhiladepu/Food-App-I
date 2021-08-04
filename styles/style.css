@@ -1,0 +1,64 @@
+body{
+        font-family: 'Roboto', sans-serif;
+}
+
+#headLogo{
+    float:left;
+    margin: 10px;
+    font-size:30px;
+}
+#navbar{
+    height:60px;
+    /* position: relative;
+    z-index: 1; */
+}
+
+#search{
+    float:left;
+    width:500px;
+    height:30px;
+    margin:5px 20px;
+}
+
+#navbar input{
+    border-radius: 5px;
+    border:1px solid #000;
+    padding: 0px 10px;
+    outline:none;
+    margin-top:15px;
+}
+
+#appendDiv{
+    width:500px;
+    border:1px solid #000;
+    border-top:none;
+    position: relative;
+    z-index:9;
+    margin-left:20px;
+    margin-top:-5px;
+    padding:0px 10px;
+    float:left;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#latestReceipe, #receipeOfTheDay{
+    float:right;
+    width:180px;
+    margin: 15px 10px;
+}
+
+#headLogo:hover, #latestReceipe:hover, #receipeOfTheDay:hover{
+    text-decoration:underline;
+}
+
+#navbar + hr{
+    width:99%;
+    /* position:relative;
+    z-index:2; */
+
+}
+
+#appendElement{
+    padding: 5px 0px;
+}
